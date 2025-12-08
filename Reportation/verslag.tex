@@ -1,209 +1,452 @@
-%This line sets a lot of preferences on how the document looks: Essentially like a paper in the Physical Review.
-\documentclass[pra,a4paper, amsfonts, amssymb, amsmath, reprint, showkeys, nofootinbib, twoside]{revtex4-2}
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% conference paper.
 
-\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
-%This sets abbreviation rules for English:
-\usepackage[english]{babel}
-%This package helps LaTex work with international characters in the input.
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+\documentclass[conference]{IEEEtran}
+\usepackage{url}
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+   \graphicspath{{./Images/}}
+\else
+\fi
+
+% *** MATH PACKAGES ***
+\usepackage{amsmath}
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+\usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[pdftex, pdftitle={Article}, pdfauthor={Author}]{hyperref} % For hyperlinks in the PDF
-\bibliographystyle{apsrev4-2}
-\usepackage{verbatim} %deze maakt comments makkelijker
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage[font=scriptsize]{caption}
-\usepackage{geometry}
-\usepackage{float}
-\usepackage{subfloat}
- \geometry{
- a4paper,
- total={170mm,257mm},
- left=20mm,
- top=20mm,
- }
-%The following 4 lines cause the author e-mail addresses to be indicated with letters rather than standard footnote signs
-\makeatletter
-\let\@fnsymbol@latex\@fnsymbol
-\let\@fnsymbol\@alph 
-\makeatother
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+%\fancyhf{}
+\chead{VI Workshop de Pós-Graduação - Engenharia de Computação - WPGEC 2017}
+\renewcommand{\headrulewidth}{2pt}
+
+\pagenumbering{gobble}
 
 \begin{document}
-\title{Machine Learning project}
-\author{Sander Geurts - 6991610}
-    \email{s.a.m.geurts@students.uu.nl}
-\author{Pepijn de Man - 1379704}
-    \email{p.r.deman@students.uu.nl} 
-    \affiliation{B.Sc. education program Physics \& Astronomy, Utrecht University, The Netherlands}
-\author{Sam Meijer - 6581331}
-    \email{s.a.meijer@students.uu.nl} 
-    \affiliation{B.Sc. education program Physics \& Astronomy, Utrecht University, The Netherlands}
-\author{Sacha Schenk - 9440313}
-    \email{s.c.h.schenk@students.uu.nl} 
-    \affiliation{B.Sc. education program Physics \& Astronomy, Utrecht University, The Netherlands}
-\date{\today}
 
-\begin{abstract}
-In this paper, a numerical solution to the Schrödinger equation is examined and used to describe tunneling effects due to an erected potential barrier. The numerical solution is compared to known solutions of the Schrödinger equation with specified potentials like the infinite square well (ISW) and the quantum harmonic oscillator (QHO). After that, the numerical solutions were used to describe tunneling properties. The numerical solutions that have been found match with existing theoretical knowledge of quantum mechanic tunneling processes.
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Paper Template - WPGEC 2017}
 
-\end{abstract}
 
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page, use this alternative format:
+% 
+\author{\IEEEauthorblockN{SHELL, M.\IEEEauthorrefmark{1};
+SIMPSON, H. S.\IEEEauthorrefmark{1};
+KIRK, J.\IEEEauthorrefmark{2} (Name of the Student; Supervisor; Co-Supervisor)}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Sciences Laboratory - School of Electrical and Computer Engineering}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}Computer Laboratory - School of Digital Systems\\
+E-mail: \{shell,kirk\}@usp.br, simpson@sds.usp.br}}
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
 \maketitle
 
+\thispagestyle{fancy}
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\renewcommand{\abstractname}{Abstract}
+\begin{abstract}
+Abstract here.
+\end{abstract}
+
+\renewcommand\IEEEkeywordsname{Keywords}
+\begin{IEEEkeywords}
+\label{Keywords}
+word 1; word 2.
+\end{IEEEkeywords}
+
+%%%%Only for english article%%%%%%%%%%%%%%%%
+\renewcommand\IEEEkeywordsname{Classification}
+\begin{IEEEkeywords}
+	\label{Classification}
+	indicate whether the study is: undergraduate research, master's degree or doctorate degree [Only for article in English].
+\end{IEEEkeywords}
+\renewcommand\IEEEkeywordsname{Category}
+\begin{IEEEkeywords}
+	\label{Category}
+	Indicate the state of the research (applies to Master degree/Doctorate degree): 
+	Beginner, Intermediate ou In conclusion [Only for article in English] 
+\end{IEEEkeywords}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\abstractname}{Resumo}
+\begin{abstract}
+\label{Resumo}
+Resumo aqui para documento em Portugu\^{e}s.
+\end{abstract}
+
+\renewcommand\IEEEkeywordsname{Palavras-chave}
+\begin{IEEEkeywords}
+\label{Palavras-chave}
+palavra 1; palavra 2.
+\end{IEEEkeywords}
+
+\renewcommand\IEEEkeywordsname{Classifica\c{c}\~{a}o}
+\begin{IEEEkeywords}
+	\label{classificacao}
+	Indicar se o estudo \'{e}: Incia\c{c}\~{a}o cientifica, Mestrado ou Doutorado
+\end{IEEEkeywords}
+
+\renewcommand\IEEEkeywordsname{Categoria}
+\begin{IEEEkeywords}
+	\label{Categoria}
+	Indicar o estado da pesquisa (aplica para Mestrado / Doutorado): 
+ 	Iniciante, Intermedi\'{a}ria ou Em conclus\~{a}o 
+\end{IEEEkeywords}
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
 \section{Introduction}
-It is the reason our sun is able to produce energy: quantum tunneling is one of the most (in)famous phenomena in all of physics. Quantum tunneling describes how quantum particles are able to travel through erected energy barriers where a classical particle would not be able to do so. It is of fundamental importance to applications such as quantum computing, flash memory, certain semi-conductors and processes such as nuclear fusion and photosynthesis. Therefore, it is imperative to improve our understanding of the phenomenon for the development of new technologies.\\
-\\
-In practice it is nearly impossible to analytically calculate the behaviour of tunnelling particles due to the large number of variables that influence their behaviour. Therefore, in this paper, we study quantum tunnelling using a simplified one-dimensional numerical model, omitting the effects of particle-particle interactions and the finite nature of potentials that are physically feasible. To gain a qualitative understanding we shall examine a one-dimensional particle placed inside a bounded potential with a barrier erected  at its center. This potential is chosen so as to create a situation in which the particle might tunnel through the barrier.
-\\
-%If one would ask anyone who never followed any high school level exceeding oquantum mechanics course about quantum mechanics, this person would most likely bring up the quantum tunneling. Quantum tunneling describes how quantum particles are able to travel through erected energy barriers in so called classically forbidden areas. It is widely regarded as one of the most spectacular and appealing features of quantum mechanics.\\
-\\
-In the field of quantum mechanics, one's goal is often to find the wave function of a particle in order to describe and understand (to some certain amount) its properties. In this report, our aim is to present a way to numerically represent the way an erected barrier affects the wave function of quantum states, subject to different specified potentials (infinite square-well and harmonic oscillator). As well as that, we will compare the tunnelling phenomenon for different barrier heights in an infinite square-well. These investigations have allowed a quantitative analysis of the effect of different barrier heights.
+% no \IEEEPARstart
+This demo file is intended to serve as a ``starter file''
+for papers produced under \LaTeX\..
+% You must have at least 2 lines in the paragraph with the drop letter
+% (should never be an issue)
+
+Maximum number of pages: 04.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
 
 
-\section{Methodology}
-In quantum mechanics, the state of a particle can be represented by its wave function. This wavefunction satisfies the Schrödinger equation \cite{Griffiths}:
+
+
+\subsection{Subsection Heading Here}
+Subsection text here.
+
+
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
+
+
+\subsubsection{Subsubsection Heading Here}
+Subsubsection text here.
+
+Text.
+
+Text.
+
+Text.
+
+Text.
 
 \begin{equation}
-    i\hbar\frac{\partial}{\partial t} \Psi(x,t) = - \frac{\hbar^2}{2m}  \frac{\partial^2}{\partial x^2} \Psi(x,t) + V(x,t) \Psi(x,t),
+a + b = \phi
+\label{eq:01}
 \end{equation}
 
-where $\Psi(x,t)$ is the wave function, $x$ is the position, $t$ the time and $m$ the mass of the particle. 
+Text.
 
-\subsection{D+ particle huppeldepup}
-(jesper)
-This equation captures the behaviour of a particle for any specified potential $V(x,t)$. The potential that a particle is subject to can be composed of different elements that contribute to the total potential $V(x,t)$ that is part of the Schrödinger equation. For example, in the case of the harmonic oscillator, particles are subject to the harmonic oscillator potential, which is given by: 
+Text.
 
-\begin{equation}
-    V(x) = \frac{1}{2}m\omega^2 x^2, 
-\end{equation}
-where $\omega$ is the angular frequency of the particle and $m$ its mass. 
-\newline However, in numerically solving the Schrödinger equation, one treats the energy barrier that is to be tunneled as another potential energy term. Hence, the total potential that the test particle is subject to can be specified as a total potential consisting of the potential of the system (for example harmonic oscillator potential) and an additional potential term due to the erected barrier. 
+Text.
 
-\subsection{Machine Learning}
+Text.
 
-In order to find the solutions of (1), we use a separation of variable ansatz \cite{Griffiths}. This leads to two differential equations that can be solved analytically, one of them being the so-called time-independent Schrödinger equation (from here TISE). In order to find solutions to the Schrödinger equation, one should find the solutions to the TISE, which is given by: 
-\begin{equation}
-    \hat{H}\psi_n= E\psi_n,
-\end{equation}
-\newline where $\hat{H}$ is the Hamiltonian operator, which is given by:
-\begin{equation}
-    \hat{H}=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x).
-\end{equation}
-The solutions of (3) are quantized and hence only permit solutions for the wave equation with specific energies \cite{Griffiths}. Every solution to the time independent Schrödinger equation is called an eigenstate (eigenfunction, -vector) with an associated eigenenergy (corresponding eigenvalue of the Hamiltonian operator), which can be denoted as \{$\psi_n, E_n$\}.
-\newline In order to solve the Schrödinger equation numerically, one can make use of the method of exact diagonalization. In this approach, one discretizes space, which leads to an approximate Hilbert Space. It is a linear algebra technique that leads to diagonalized matrices for the Hamiltonian of the system. This way, the eigenvectors and their corresponding eigenvalues can be computed. Hence, the continuous Schrödinger equation is nummerically approximated, having approximated solutions living in a very well approximated Hilbert Space. 
+Text.
 
-\newline An important aspect of tunneling experiments is the transmission and reflection of wave functions. A scattering state is a quantum state that is not bound to a potential. When it hits a potential barrier, the particle has a finite non-zero probability of going through the barrier and ending up in a so-called classically forbidden area. This can be interpreted as the transmission of the wave through the barrier. When the wave hits the barrier, it is partially reflected and partially transmitted. The extent to which a particle is transmitted and reflected is described by its transmission and reflection coefficient \cite{Griffiths}. These coefficiens have the following expressisons: 
-\newline 
-\begin{equation}
-    R= \frac{\beta^2}{1+\beta^2},
-\end{equation} 
+Text.
 
-\begin{equation}
-    T= \frac{1}{1+\beta^2},
-\end{equation}
+Text.
 
-where $R$ is the reflection coefficient,$T$ the transmission coefficient and $\beta$ is a substitution variable to make the equation less messy. Its definition is: 
+Text.
 
-\begin{equation}
-    \beta = \frac{m\alpha}{\hbar^2k}\
-\end{equation} 
-\newline In (7), variable $\alpha$ is a constant that defines the strength of the potential, $m$ is again the particle mass and $k$ is given by the following equation: 
+Text.
 
-\begin{equation}
-    k = \frac{\sqrt{-2mE}}{\hbar},
-\end{equation} 
-with $E$ the energy of the tunneling particle.
+Text.
 
+Figure \ref{fig_sim} shows ...
 
-\section{Results}
-\newline Hartree units are used where $\hbar = \pi = \omega = 1$. In this paper the derivative is defined by a nearest neighbor approximation where the matrix derivative operator is defined so that:
-\begin{equation}
-    \frac{\delta}{\delta x_j} = \frac{1}{a} [\psi(x_{j+1})-\psi(x_j)]
-\end{equation}
-This would introduce an error however, since this derivative is only dependent on the closest lattice point to the right. By transposing this matrix and taking the dot product we end up with the correct matrix for the second derivative with respect to x, which we use with Hamiltonian calculations. For the QHO this approximation has given results which differ little from the theoretical results, as described in the results section. For the following simulations we have used an ISW with a length of $L = 20$ and a barrier at the center of the ISW with width of $W = 10$.
-\newline The gained eigenvalues are plotted against barrier heights. The associated eigenfunctions are studied and compared to the theoretical eigenfunctions, for example those in Griffiths\cite{Griffiths} and those encountered in the problem classes \cite{Solutions}.
-
-\newline Furthermore, the calculation used for the ISW is the exact same as for all other cases studied in this paper, with the small change of different potentials added to the Hamiltonian before finding its eigenstates.
-\newline Lastly, once we were convinced that the code generates reliable numerical solutions for different potentials, we analyzed the way the barrier height affects the tunneling process. This can be done by computing the probabilities of finding the particle in different regions of the infinite square well at different barrier heights. Our code (see specific code section), computes how likely a particle is to be found to the left of the barrier, inside the barrier or to the right of the barrier, which shows to what extend it is displaying tunneling properties. We take the integral of the absolute squared wavefunction to mean the chance to find a particle in a certain area. This integral is calculated numerically using the discretised wavefunction.
-\newline When this is done for different heights, a probability distribution is created for the particle to be in the above three regions of space. From this, one can find relations between the height of the barrier and the tunneling probabilities. We analyzed the probability distribution for one specific eigenstate. For this purpose, we chose eigenstate $\psi_9$ (see result section). In exposition this state showed the textbook probabilities of a tunneling particle for a barrier with height 1, and would therefore be a reliable start to show tunneling effects.
-
-
-\section{Discussion}
- Firstly, in Fig. \ref{Fig.TheoNum}, the numerically calculated eigenenergies of the first 300 eigenstates of the QHO (in blue) are plotted with the theoretical values of the eigenenergies that correspond to these states (in orange). The numerical and theoretical values diverge at the 150th eigenstate. We see that for higher values of $n$, the numerical values are not a good approximation for the known set of eigenfunctions and eigenenergies \{$\psi_n, E_n$\}. However, the code perfectly fits the first 60 eigenvalues with a maximum of 1\% difference. The first 150 eigenvalues represent the theoretical values to a fair degree. The model diverges for eigenstates $\psi_n>$ with $n>150$ due to the limitations of diagonalizing approximation approach.
- \begin{figure}[h]
-    \centering
-    \includegraphics[width=\columnwidth]{comparing_eigenvalues.jpeg}
-    \caption{\it Numerically acquired and theoretical energy eigenvalues for the quantum harmonic oscillator plotted against their respective eigenstate number.}
-    \label{Fig.TheoNum}
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+\begin{figure}[!tp]
+\centering
+% \includegraphics[width=2.5in]{myfigure.png}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+\caption{Simulation results for the network.}
+\label{fig_sim}
 \end{figure}
 
-In Fig.~\ref{wavefunctions}, three plots of the square of the absolute value of the wavefunction $\abs{\Psi}^2$ are plotted against the position $x$ in blue. This can be interpreted as the relative probability of finding a particle at position $x$. In the same plots we have also plotted the potential barrier in orange. Despite the potential energy having a different unit than $\abs{\Psi}^2$, we still choose to plot them together to show how the potential influences the wavefunction of the particle. The potential energy is infinite outside of $-15\leq x\leq 15$. Since the probability of tunneling decreases exponentially with the height of the potential, the probability of finding the particle outside of the plotted domain is zero. Thus we have chosen to omit this from the figure. In the figures, the energy of the test particle raises from top to bottom: i.e., the test particle in the upper figure has the lowest energy, and the particle in the bottom figure has the highest energy.
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
 
-\begin{figure}[h]
-        \centering
-        \begin{subfigure}{0.4\textwidth}
-            \centering
-            \includegraphics[width=\columnwidth]{python plots/Figure_1_1.png}
-            \caption{First eigenstate ($\psi_1$ hitting the barrier}
-            \label{2a}
-        \end{subfigure}
-        
-        \begin{subfigure}{0.4\textwidth}
-            \centering
-            \includegraphics[width=\columnwidth]{python plots/Figure_9_9.png}
-            \caption{2b}
-            \label{2b}
-        \end{subfigure}
-        
-        \begin{subfigure}{0.4\textwidth}
-            \centering
-            \includegraphics[width=\columnwidth]{python plots/Figure_15-15.png}
-            \caption{2c}
-            \label{2c}
-        \end{subfigure} 
-        \caption{\it The absolute value of the wavefunction squared is plotted over its allowed position domain, for three different energies. From top to bottom, the corresponding wave functions are eigenstates $\psi_n$, with $n=1$ (top), $n=9$ (middle) and $n=35$ (bottom).}
-        \label{wavefunctions}
-\end{figure}
 
-It is noticed that in the first plot of Fig.~\ref{wavefunctions} (lowest energy), the probability function ($\abs{\Psi}^2$) resides almost entirely on the left side of the barrier, while on the second plot the particle is starting to get a higher probability of getting partway into the barrier. In the second plot of Fig.~\ref{wavefunctions} the probability of finding a particle is noticeably non-zero on the right side of the barrier. If you were to remeasure the location of the particle, there is a small but non-zero chance that it will have tunneled through the barrier. In the final plot the energy of the test particle is sufficiently high to notice a less important role of the barrier. This observation stresses the decline in importance of the barrier in determining the particle behaviour once its initial energy reaches some high enough value. This result can also be seen very clearly in Fig.~\ref{eigenenergies}. In this figure, the eigenvalues of the fist 30 eigenstates are plotted in yellow for the undistorted infinite square well potential and in blue for the case where the Hamiltonian has a correction in the potential due to an erected barrier. One notices that the eigenenergies come in pairs. This can be explained due to the symmetry of the eigenstates: there is always a solution to the left and to the right of the barrier, hence the eigenenergies must be paired. For the first eigenstates, one notices an increasing energy due to the barrier. However, along the curve, as the initial energy of the test particle increases, the effect of the barrier flattens, which is clear from the plots as the yellow and blue dots get closer to each other as one follows the curve. For these high energy states the relative energy of the barrier potential goes to zero and its influence can be neglected.\\
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.9\columnwidth]{eigenvalues_ISW_1.jpeg}
-    \caption{\it The eigenvalues of the ISW with and without a barrier. Eigenenergies.}
-    \label{eigenenergies}
-\end{figure}
+Text.
 
-In Fig. \ref{eigenfunction9}, the solution for one of the nummerically acquired eigenfunctions of a particle that tunnels in an infinite square well is shown. This is the plot of the ninth eigenfunction tunneling in an infinite square well with an erected barrier with height 1, which from now on will be denoted as $\psi_9$. We highlight this eigenfunction here, as it is the eigenfunction we have chosen to work with in the quantative analysis of different barrier heights. $\psi_9$ is arbitrarily chosen, as this eigenfunction was the first eigenfunction in our simulations that niceley showed the tunnel effect in our first test simulations with a barrier height of 1 (see Fig. 2b). Therefore, $\psi_9$ was used to compare data of different barrier heights. 
+Text.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\columnwidth]{python plots/Wavefunction_9_im_real.png}
-    \caption{\it The 9th eigenstate of the Schrödinger equation for the ISW with a barrier potential. The real and imaginary components are shown.}
-    \label{eigenfunction9}
-\end{figure}
+Text.
 
-Fig \ref{barriers} shows the probabilities of finding a particle in a specified part of the infinite square well. As described in the method section, we have divided the infinite square well in three regions. The code determines the chance to find the particle over a range. On the vertical axis of Fig \ref{barriers}, the probability for the particle to be in a specified region of space is plotted against the height of the barrier on the horizontal axis. The orange curve is the probability of finding the particle inside the barrier. The blue curve shows the probability of finding the particle on the left side of the barrier, which means that the particle is reflected. The green curve shows the probability of the particle being transmitted; in other words, the green curve shows the tunneling probability of the particle. 
-\newline As the probability densities are normalized, the value of the three curves for every barrier height will always sum to 1, as the total probability of finding the state in the well must always be 1. 
-\newline The reflection probability curve is mainly increasing with the height of the potential barrier, as one might expect. We see that the probability of tunneling is higher when the barrier height is lower. Of special importance is the region between barrier heights between approximately 0.375 and 0.75, where the probability to find the particle inside the barrier peaks. In this case, the particle is trapped inside the potential. Here, the particle is transmitted into the barrier, however, it does not completely tunnel through the potential barrier as it is mostly reflected at the right wall of the barrier. The reflected particle then travels from the right wall to the left wall and instead of being transmitted, it is again reflected towards the right wall. In these height regions, the barrier is high enough to prevent the particle from complete tunneling, as it is constantly reflected between the two walls. If the height of the wall increases even more, we see that the chances of finding the particle on the right side of the barrier converge to zero. Hence, we can state that with increasing height the probability for complete tunneling goes to zero. The numerical solutions reproduce what one would expect from the theory. As well as the chance to find the particle at the right side of the barrier, the probability of finding the particle inside the barrier also converges to a very low value with increasing barrier. However, one clearly notices that this probability converges slower than the probability of tunneling through the barrier and that the probability of finding the particle inside the barrier is never zero. This means that the transmission coefficient that describes the first tunneling process(left wall of the barrier) is never zero at the heights we studied. We clearly see that there will always be a finite non-zero probability to find the particle inside the barrier. We also notice an increasing chance of the particle being reflected. In other words, with increasing barrier height, the reflection coefficient increases. It is important to stress the fact that the probability of reflection approaches 1 with increasing height, but it does not converge to 1. This highlights the fact that there will always be a finite non-zero probability of finding the particle inside the barrier. This means that it tunnels through the left wall of the barrier, but not through the right wall of the barrier.
+Text.
+
+Text.
+
+Text.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+\begin{table}[!tp]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+\caption{An Example of a Table}
+\label{table_example}
+\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+\begin{tabular}{c|c}
+\hline
+\textbf{Number} & \textbf{Description} \\
+\hline
+Number 1 & Description 1 \\
+\hline
+Number 2 & Description 2\\
+\hline
+\end{tabular}
+\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
 
 \section{Conclusion}
-The results that were obtained and listed above, are to good approximation valid solutions for the Schrödinger equation. However, one must remark that they are obtained by discretizing space in a finite amount of lattices. In addition, the width of the potential may not be exactly symmetric as a result of set finite amount of lattices. This could be a limiting factor in the validity of the output of the code that localizes the position of the test particle. As well as that, it is clear that, although the Schrödinger equation should return an infinite list {$psi_n$, $E_n$}, the numerical results fail for $n>150$. With more computational power, the program could have been run with a higher number of lattices. This would have given a better descriptive numerical analysis. 
-\newline As well as that, the relation between the height of the barrier and the tunneling coefficients could have been more explicitly determined by either using more data on a smaller total height difference, or alternatively by using a bigger data spectrum. That might be a good follow-up research. 
-\\
-
-\section{Bibliography}
+The conclusion goes here.
 
 
 
-\bibliographystyle{apsrev4-2}
-\bibliography{refs}
+
+% conference papers do not normally have an appendix
 
 
-% \begin{thebibliography}{4}
-% \bibitem{Griffiths:qm} 
-% D. J. Griffiths,
-% \textit{Introduction to Quantum Mechanics, 3rd edition}
-% (Cambridge University Press, Cambridge, 2019).
-% \end{thebibliography}
-% }
+% use section* for acknowledgment
+\section*{Acknowledgment}
+
+
+The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+%Use BIB file
+\bibliographystyle{abntex2-num}
+\bibliography{bibliography}
+
+% that's all folks
 \end{document}
+
+
